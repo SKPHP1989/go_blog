@@ -5,6 +5,8 @@ import (
 	"blog/utils"
 	"fmt"
 	"strings"
+
+	"github.com/astaxie/beego"
 )
 
 type AdminController struct {
@@ -16,12 +18,13 @@ func (this *AdminController) Login() {
 		username := this.GetString("username")
 		password := this.GetString("password")
 		user := models.User{Username: username}
-
+		// 查询用户
 		err := this.o.Read(&user, "username")
 		if err != nil {
-			fmt.Printf("err:%v", err)
+			fmt.Printf("err :%v", err)
+			beego.Critical("asdasd")
 		}
-		if user.Password == "" {
+		if user.Id == 0 {
 			this.JumpGoto("账号不存在", "")
 		}
 		// 输入密码
