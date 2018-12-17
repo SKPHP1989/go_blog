@@ -5,7 +5,6 @@ type HomeController struct {
 }
 
 func (this *HomeController) Index() {
-	session := this.GetSession("user")
 	this.Data["user"] = session
 	this.SetDefaultTplName()
 }

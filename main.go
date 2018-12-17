@@ -1,6 +1,7 @@
 package main
 
 import (
+	"blog/controllers"
 	"blog/models"
 	_ "blog/routers"
 
@@ -13,5 +14,6 @@ func init() {
 }
 
 func main() {
+	beego.ErrorController(&controllers.ErrorController{})
 	beego.Run()
 }
